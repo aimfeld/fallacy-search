@@ -1,6 +1,8 @@
 import streamlit as st
 from dotenv import load_dotenv
 from search import fallacy_search, FallacyResponse
+import warnings
+import logging
 
 
 # Load environment variables from .env file
@@ -83,6 +85,7 @@ def show_main_page():
                 # response = fallacy_search(user_input, model = 'gpt-4o-mini')
                 response = fallacy_search(user_input)
                 st.session_state.response = response
+                logging.info(f'Processed user input (length: {len(user_input)}, fallacies: {len(response.fallacies)})')
             except Exception as e:
                 st.session_state.error = e
 
@@ -121,6 +124,11 @@ def show_main_page():
 
 def main():
     """Main application function."""
+
+    # Disable warnings like: Streaming with Pydantic response_format not yet supported.
+    warnings.filterwarnings("ignore", message="Streaming with Pydantic response_format not yet supported.")
+    logging.basicConfig(level=logging.INFO)
+
     st.set_page_config(
         page_title="Fallacy Search",
         page_icon="🔍",
