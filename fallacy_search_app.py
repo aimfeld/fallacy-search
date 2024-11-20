@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 from search import fallacy_search, FallacyResponse
 import warnings
 import logging
+from datetime import datetime
 
 
 # Load environment variables from .env file
@@ -49,6 +50,8 @@ def show_about_page():
 def get_star_rating(rating: int):
     return '⭐' * rating + '☆' * (10 - rating)
 
+def log(message:str):
+    logging.info(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {message}")
 
 def show_main_page():
     """Display the main Fallacy Search page content."""
@@ -85,7 +88,9 @@ def show_main_page():
                 # response = fallacy_search(user_input, model = 'gpt-4o-mini')
                 response = fallacy_search(user_input)
                 st.session_state.response = response
-                logging.info(f'Processed user input (length: {len(user_input)}, fallacies: {len(response.fallacies)})')
+                log(f'Processed user input: {user_input}')
+                log('Fallacies: ' + ', '.join([f.fallacy for f in response.fallacies]))
+                log('Reasoning Score: ' + str(response.rating) if response.rating else 'No rating')
             except Exception as e:
                 st.session_state.error = e
 
