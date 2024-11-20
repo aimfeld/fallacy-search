@@ -76,6 +76,10 @@ Provide your analysis in JSON format with the following structure for each ident
   "rating": <rating>
 }}
 
+Definitions:
+- An argument consists of an assertion called the conclusion and one or more assertions called premises, where the premises are intended to establish the truth of the conclusion. Premises or conclusions can be implicit in an argument.
+- A fallacious argument is an argument where the premises do not entail the conclusion.
+
 Guidelines:
 1. Fallacy Types: Include any formal and informal logical fallacies
 2. <fallacy_type>: The name of the identified formal or informal logical fallacy
@@ -96,10 +100,12 @@ Guidelines:
 
 Principles:
 - Think step by step
-- Be very thorough and include all potential fallacies in the provided text
+- Apply the principle of charity, consider the argument in its strongest form, and avoid over-detection
+- If premises are clearly stated, accept them as true for the sake of the argument
+- Consider principles of formal logical reasoning when judging the validity of an argument
+- Return an empty list if no clear logical fallacies are present
 - Adjust confidence scores downward in proportion to the strength and plausibility of the defense
 - Consider context and implicit assumptions
-- Return an empty list if no clear logical fallacies are present
 """
 
     return prompt
