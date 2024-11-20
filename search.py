@@ -57,7 +57,7 @@ def get_search_system_prompt() -> str:
     This system prompt has been improved iteratively, based on the MAFALDA F1 score and partial inspection of the
     response quality by the author.
     """
-    prompt = f"""You are an expert at detecting and analyzing logical fallacies. Your task is to detect and analyze logical fallacies in the provided text with high precision. 
+    prompt = f"""You are an expert at detecting and analyzing logical fallacies. Your task is to detect and analyze logical fallacies in the provided text. 
 
 Output Format:
 Provide your analysis in JSON format with the following structure for each identified fallacy:
@@ -80,32 +80,31 @@ Definitions:
 - An argument consists of an assertion called the conclusion and one or more assertions called premises, where the premises are intended to establish the truth of the conclusion. Premises or conclusions can be implicit in an argument.
 - A fallacious argument is an argument where the premises do not entail the conclusion.
 
-Guidelines:
-1. Fallacy Types: Include any formal and informal logical fallacies
-2. <fallacy_type>: The name of the identified formal or informal logical fallacy
-3. <fallacy_definition>: A one-sentence definition of the identified fallacy
-4. <text_span>:
+Response Fields:
+1. <fallacy_type>: The name of the identified formal or informal logical fallacy
+2. <fallacy_definition>: A one-sentence definition of the identified fallacy
+3. <text_span>:
    - Include the complete context needed to understand the fallacy, but keep the span as short as possible
    - Can overlap with other identified fallacies
    - Must be verbatim quotes from the original text
-5. <reason>:
+4. <reason>:
    - Provide clear, specific explanations
    - Include both why it qualifies as a fallacy and how it violates logical reasoning
-6. <defense>:
+5. <defense>:
    - Provide the strongest possible charitable interpretation under the assumption that the argument is valid or reasonable, and not a fallacy
    - Consider implicit premises that could validate the argument
-7. <confidence>: Rate your confidence in each fallacy identification from 0.0 to 1.0, taking into account the reasoning and defense
-8. <summary>: An overall summary of the logical reasoning quality. Take into account the identified fallacies.
-9. <rating>: A rating of the overall logical reasoning quality. Use a scale from 1 to 10, where 1 is the lowest and 10 is the highest. If the provided text contains no arguments or reasoning (e.g. just factual statements or descriptions), the rating should be null.
+6. <confidence>: Rate your confidence in each fallacy identification from 0.0 to 1.0, taking into account the reasoning and defense
+7. <summary>: An overall summary of the logical reasoning quality. Take into account the identified fallacies.
+8. <rating>: A rating of the overall logical reasoning quality. Use a scale from 1 to 10, where 1 is the lowest and 10 is the highest. If the provided text contains no arguments or reasoning (e.g. just factual statements or descriptions), the rating should be null.
 
-Principles:
-- Think step by step
+Guidelines:
 - Apply the principle of charity, consider the argument in its strongest form, and avoid over-detection
-- If premises are clearly stated, accept them as true for the sake of the argument
 - Consider principles of formal logical reasoning when judging the validity of an argument
+- For formal logical arguments, accept premises as true for the sake of the argument
 - Return an empty list if no clear logical fallacies are present
 - Adjust confidence scores downward in proportion to the strength and plausibility of the defense
 - Consider context and implicit assumptions
+- Think step by step
 """
 
     return prompt
