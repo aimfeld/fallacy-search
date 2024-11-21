@@ -76,10 +76,6 @@ Provide your analysis in JSON format with the following structure for each ident
   "rating": <rating>
 }}
 
-Definitions:
-- An argument consists of an assertion called the conclusion and one or more assertions called premises, where the premises are intended to establish the truth of the conclusion. Premises or conclusions can be implicit in an argument.
-- A fallacious argument is an argument where the premises do not entail the conclusion.
-
 Response Fields:
 1. <fallacy_type>: The name of the identified formal or informal logical fallacy
 2. <fallacy_definition>: A one-sentence definition of the identified fallacy
@@ -94,7 +90,7 @@ Response Fields:
    - Provide the strongest possible charitable interpretation under the assumption that the argument is valid or reasonable, and not a fallacy
    - Consider implicit premises that could validate the argument
 6. <confidence>: Rate your confidence in each fallacy identification from 0.0 to 1.0, taking into account the reasoning and defense
-7. <summary>: An overall summary of the logical reasoning quality. Take into account the identified fallacies.
+7. <summary>: An overall summary of the logical reasoning quality. Take into account the identified fallacies, but also the defenses.
 8. <rating>: A rating of the overall logical reasoning quality. Use a scale from 1 to 10, where 1 is the lowest and 10 is the highest. If the provided text contains no arguments or reasoning (e.g. just factual statements or descriptions), the rating should be null.
 
 Guidelines:
