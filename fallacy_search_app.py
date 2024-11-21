@@ -89,7 +89,7 @@ def show_main_page():
                 response = fallacy_search(user_input)
                 st.session_state.response = response
                 log(f'Input: {user_input}')
-                log('Fallacies: ' + ', '.join([f.fallacy for f in response.fallacies]))
+                log('Fallacies: ' + ', '.join([f'{f.fallacy} ({f.confidence * 100:.0f}%)' for f in response.fallacies]))
                 log('Reasoning Score: ' + str(response.rating) if response.rating else 'No rating')
             except Exception as e:
                 st.session_state.error = e
