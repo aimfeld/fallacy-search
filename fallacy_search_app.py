@@ -103,7 +103,7 @@ def show_main_page():
         with st.container():
             if response.fallacies:
                 st.markdown('### Detected Fallacies')
-                st.write('Note that the interpretation of fallacies is often subjective and context-dependent. Consider the quality of defenses as well.')
+                st.write('The interpretation of fallacies is often subjective and context-dependent. Consider the defenses as well.')
                 # Display each fallacy in an expander
                 for i, fallacy in enumerate(response.fallacies, 1):
                     with st.expander(f'🎯 **Fallacy #{i}: {fallacy.fallacy}**', expanded=True):
