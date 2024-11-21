@@ -30,8 +30,9 @@ def show_about_page():
     The tool aims to promote critical thinking and improve the quality of public discourse by making logical analysis 
     more accessible.
     
-    Fallacy Search has been developed and benchmark tested by Adrian Imfeld as part of a data science master thesis at 
-    Lucerne University of Applied Sciences and Arts (HSLU). For more information, see GitHub link below.
+    Fallacy Search has been developed and benchmark tested on the [MAFALDA benchmark](https://arxiv.org/abs/2311.09761) 
+    as part of a data science master thesis at Lucerne University of Applied Sciences and Arts (HSLU). For more 
+    information, see GitHub links below.
     """)
 
     st.write("Potential Applications:")
@@ -44,8 +45,9 @@ def show_about_page():
     """)
     st.write('👤 Author: Adrian Imfeld')
     st.write('📧 E-Mail: aimfeld@aimfeld.ch')
-    st.write('🔗 Fallacy Search Github: [aimfeld/fallacy-search](https://github.com/aimfeld/fallacy-search)')
-    st.write('🔗 Benchmark Tests: [aimfeld/fallacy-detection](https://github.com/aimfeld/fallacy-detection)')
+    st.write('🔗 LinkedIn: [aimfeld](https://www.linkedin.com/in/aimfeld/)')
+    st.write('⭐ Fallacy Search Github: [aimfeld/fallacy-search](https://github.com/aimfeld/fallacy-search)')
+    st.write('📊 Benchmark Tests Github: [aimfeld/fallacy-detection](https://github.com/aimfeld/fallacy-detection)')
 
 def get_star_rating(rating: int):
     return '⭐' * rating + '☆' * (10 - rating)
