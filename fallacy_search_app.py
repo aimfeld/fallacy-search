@@ -44,8 +44,8 @@ def show_about_page():
     """)
     st.write('👤 Author: Adrian Imfeld')
     st.write('📧 E-Mail: aimfeld@aimfeld.ch')
-    st.write('🔗 Github Fallacy Search: [aimfeld/fallacy-search](https://github.com/aimfeld/fallacy-search)')
-    st.write('🔗 GitHub Thesis: [aimfeld/fallacy-detection](https://github.com/aimfeld/fallacy-detection)')
+    st.write('🔗 Fallacy Search Github: [aimfeld/fallacy-search](https://github.com/aimfeld/fallacy-search)')
+    st.write('🔗 Benchmark Tests: [aimfeld/fallacy-detection](https://github.com/aimfeld/fallacy-detection)')
 
 def get_star_rating(rating: int):
     return '⭐' * rating + '☆' * (10 - rating)
