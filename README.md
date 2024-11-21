@@ -2,7 +2,7 @@
 
 The Fallacy Search application helps users identify potential logical fallacies in any text. It uses GPT-4o to detect and analyze common reasoning errors and argumentative flaws. The tool aims to promote critical thinking and improve the quality of public discourse by making logical analysis more accessible.
 
-Fallacy Search has been developed and benchmark tested by Adrian Imfeld as part of a data science master thesis at Lucerne University of Applied Sciences and Arts (HSLU). For more information, see GitHub repository: [fallacy-detection](https://github.com/aimfeld/fallacy-detection)
+Fallacy Search has been developed and benchmark tested as part of a data science master thesis at Lucerne University of Applied Sciences and Arts (HSLU). For more information, see GitHub repository: [fallacy-detection](https://github.com/aimfeld/fallacy-detection)
 
 Potential Applications:
 
