@@ -19,8 +19,6 @@ def initialize_session_state():
         st.session_state.response = None
     if 'error' not in st.session_state:
         st.session_state.error = None
-    if 'prompt_count' not in st.session_state:
-        st.session_state.prompt_count = 0
 
 
 def show_about_page():
@@ -90,8 +88,7 @@ def show_main_page():
                 # response = fallacy_search(user_input, model = 'gpt-4o-mini')
                 response = fallacy_search(user_input)
                 st.session_state.response = response
-                st.session_state.prompt_count += 1
-                log(f'Input {st.session_state.prompt_count}: {user_input}')
+                log(f'Input: {user_input}')
                 log('Fallacies: ' + ', '.join([f.fallacy for f in response.fallacies]))
                 log('Reasoning Score: ' + str(response.rating) if response.rating else 'No rating')
             except Exception as e:
