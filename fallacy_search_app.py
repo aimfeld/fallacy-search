@@ -43,11 +43,11 @@ def show_about_page():
     - Identifying weaknesses in legal arguments and court decisions
     - Flagging pseudoscience and unsound marketing
     """)
-    st.write('👤 Author: Adrian Imfeld')
-    st.write('📧 E-Mail: aimfeld@aimfeld.ch')
-    st.write('🔗 LinkedIn: [aimfeld](https://www.linkedin.com/in/aimfeld/)')
-    st.write('⭐ Source Code: [aimfeld/fallacy-search](https://github.com/aimfeld/fallacy-search)')
-    st.write('📊 Benchmark Tests: [aimfeld/fallacy-detection](https://github.com/aimfeld/fallacy-detection/blob/main/fallacy_search.ipynb)')
+    st.write("👤 Author: Adrian Imfeld")
+    st.write("📧 E-Mail: aimfeld@aimfeld.ch")
+    st.write("🔗 LinkedIn: [aimfeld](https://www.linkedin.com/in/aimfeld/)")
+    st.write("⭐ Source Code: [aimfeld/fallacy-search](https://github.com/aimfeld/fallacy-search)")
+    st.write("📊 Benchmark Tests: [aimfeld/fallacy-detection](https://github.com/aimfeld/fallacy-detection/blob/main/fallacy_search.ipynb)")
 
 
 def get_star_rating(rating: int):
@@ -67,11 +67,11 @@ def show_main_page():
 
     # Text input area with character limit
     user_text = st.text_area(
-        label="no label",
+        label='no label',
         label_visibility='hidden',  # Hide label
         max_chars=MAX_INPUT_LENGTH,
         height=100,
-        key="user_input"
+        key='user_input'
     )
     user_input = user_text.strip()
 
@@ -88,14 +88,14 @@ def show_main_page():
         st.write("Please try again.")
 
     if st.session_state.processing:
-        with st.spinner('Processing...'):
+        with st.spinner("Processing..."):
             try:
                 # response = fallacy_search(user_input, model = 'gpt-4o-mini')
                 response = fallacy_search(user_input)
                 st.session_state.response = response
-                log(f'Input Length: {len(user_input)}')
-                log('Fallacies: ' + ', '.join([f'{f.fallacy} ({f.confidence * 100:.0f}%)' for f in response.fallacies]))
-                log('Reasoning Score: ' + str(response.rating) if response.rating else 'No rating')
+                log(f"Input Length: {len(user_input)}")
+                log("Fallacies: " + ', '.join([f'{f.fallacy} ({f.confidence * 100:.0f}%)' for f in response.fallacies]))
+                log("Reasoning Score: " + str(response.rating) if response.rating else 'No rating')
             except Exception as e:
                 st.session_state.error = e
 
@@ -107,32 +107,32 @@ def show_main_page():
 
         with st.container():
             if response.fallacies:
-                st.markdown('### Detected Fallacies')
+                st.markdown("### Detected Fallacies")
                 # Display each fallacy in an expander
                 for i, fallacy in enumerate(response.fallacies, 1):
-                    with st.expander(f'🎯 **Fallacy #{i}: {fallacy.fallacy}**', expanded=True):
-                        st.markdown(f'**{fallacy.fallacy}:** {fallacy.definition}')
-                        st.markdown(f'**Quote:** _“{fallacy.span}”_')
-                        st.markdown(f'**Reason:** {fallacy.reason}')
+                    with st.expander(f"🎯 **Fallacy #{i}: {fallacy.fallacy}**", expanded=True):
+                        st.markdown(f"**{fallacy.fallacy}:** {fallacy.definition}")
+                        st.markdown(f"**Quote:** _“{fallacy.span}”_")
+                        st.markdown(f"**Reason:** {fallacy.reason}")
                         if fallacy.defense:
-                            st.markdown(f'**Defense:** {fallacy.defense}')
-                        st.markdown(f'**Confidence:** {fallacy.confidence * 100:.0f}%')
+                            st.markdown(f"**Defense:** {fallacy.defense}")
+                        st.markdown(f"**Confidence:** {fallacy.confidence * 100:.0f}%")
 
             st.markdown("### Overall Analysis")
             st.markdown("**📝 Summary**")
             st.markdown(response.summary)
 
-            st.markdown(f'**⭐ Reasoning Score**')
+            st.markdown(f"**⭐ Reasoning Score**")
             if response.rating:
-                st.markdown(f'{get_star_rating(response.rating)} ({response.rating} out of 10)')
+                st.markdown(f"{get_star_rating(response.rating)} ({response.rating} out of 10)")
             else:
                 st.markdown("Not rated since the text seems to contain no arguments.")
 
             if response.fallacies:
                 st.markdown("**⚠ Disclaimer**")
-                st.markdown("""The interpretation of fallacies is often subjective and context-dependent. Consider the 
-                            defenses as well. Critical thinking includes not blindly trusting this AI generated 
-                            analysis. For more info, see the About page.""")
+                st.markdown("""The interpretation of fallacies is often subjective and context-dependent. 
+                            Critical thinking includes not blindly trusting this AI generated  analysis. 
+                            For more info, see the About page.""")
 
 
 def main():
