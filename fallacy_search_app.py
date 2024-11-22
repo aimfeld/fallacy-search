@@ -5,11 +5,11 @@ import warnings
 import logging
 from datetime import datetime
 
-
 # Load environment variables from .env file
 load_dotenv()
 
 MAX_INPUT_LENGTH = 30000
+
 
 def initialize_session_state():
     """Initialize session state variables if they don't exist."""
@@ -49,11 +49,14 @@ def show_about_page():
     st.write('⭐ Fallacy Search Github: [aimfeld/fallacy-search](https://github.com/aimfeld/fallacy-search)')
     st.write('📊 Benchmark Tests Github: [aimfeld/fallacy-detection](https://github.com/aimfeld/fallacy-detection)')
 
+
 def get_star_rating(rating: int):
     return '⭐' * rating + '☆' * (10 - rating)
 
-def log(message:str):
+
+def log(message: str):
     logging.info(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {message}")
+
 
 def show_main_page():
     """Display the main Fallacy Search page content."""
@@ -65,7 +68,7 @@ def show_main_page():
     # Text input area with character limit
     user_text = st.text_area(
         label="no label",
-        label_visibility='hidden', # Hide label
+        label_visibility='hidden',  # Hide label
         max_chars=MAX_INPUT_LENGTH,
         height=100,
         key="user_input"
@@ -101,11 +104,10 @@ def show_main_page():
 
     if not st.session_state.processing and st.session_state.response:
         response: FallacyResponse = st.session_state.response
-        # Create a container for better spacing
+
         with st.container():
             if response.fallacies:
                 st.markdown('### Detected Fallacies')
-                st.write('The interpretation of fallacies is often subjective and context-dependent. Consider the defenses as well.')
                 # Display each fallacy in an expander
                 for i, fallacy in enumerate(response.fallacies, 1):
                     with st.expander(f'🎯 **Fallacy #{i}: {fallacy.fallacy}**', expanded=True):
@@ -116,9 +118,6 @@ def show_main_page():
                             st.markdown(f'**Defense:** {fallacy.defense}')
                         st.markdown(f'**Confidence:** {fallacy.confidence * 100:.0f}%')
 
-                # Display summary and rating in a separate container
-                st.markdown("---")
-
             st.markdown("### Overall Analysis")
             st.markdown("**📝 Summary**")
             st.markdown(response.summary)
@@ -128,6 +127,12 @@ def show_main_page():
                 st.markdown(f'{get_star_rating(response.rating)} ({response.rating} out of 10)')
             else:
                 st.markdown("Not rated since the text seems to contain no arguments.")
+
+            if response.fallacies:
+                st.markdown("**⚠ Disclaimer**")
+                st.markdown("""The interpretation of fallacies is often subjective and context-dependent. Consider the 
+                            defenses as well. Critical thinking includes not blindly trusting this AI generated 
+                            analysis. For more info, see the About page.""")
 
 
 def main():
