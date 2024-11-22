@@ -40,7 +40,7 @@ def fallacy_search(text: str, model = 'gpt-4o') -> FallacyResponse:
     llm = ChatOpenAI(
         openai_api_key=os.getenv("OPENAI_API_KEY"),
         model=model,
-        temperature=0.0,  # Higher temperature might generate more identified fallacies
+        temperature=0.0,  # Low temperature for more deterministic responses
         timeout=30.0,
         max_retries=2,
     )
