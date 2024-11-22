@@ -46,8 +46,8 @@ def show_about_page():
     st.write('👤 Author: Adrian Imfeld')
     st.write('📧 E-Mail: aimfeld@aimfeld.ch')
     st.write('🔗 LinkedIn: [aimfeld](https://www.linkedin.com/in/aimfeld/)')
-    st.write('⭐ Fallacy Search Github: [aimfeld/fallacy-search](https://github.com/aimfeld/fallacy-search)')
-    st.write('📊 Benchmark Tests Github: [aimfeld/fallacy-detection](https://github.com/aimfeld/fallacy-detection)')
+    st.write('⭐ Source Code on Github: [aimfeld/fallacy-search](https://github.com/aimfeld/fallacy-search)')
+    st.write('📊 Benchmark Tests on Github: [aimfeld/fallacy-detection](https://github.com/aimfeld/fallacy-detection/blob/main/fallacy_search.ipynb)')
 
 
 def get_star_rating(rating: int):
