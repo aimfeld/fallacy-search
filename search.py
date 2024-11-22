@@ -1,6 +1,6 @@
 """
 This module contains the logic for fallacy search, where an LLM is used to detect and analyze multiple logical fallacies
-in a given text. This is an extended version and not used in the experiments.
+in a given text.
 """
 
 from pydantic import BaseModel, Field
