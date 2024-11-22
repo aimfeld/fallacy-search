@@ -35,7 +35,7 @@ def show_about_page():
     information, see GitHub links below.
     """)
 
-    st.write("Potential Applications:")
+    st.write("Applications:")
     st.markdown("""
     - Argument quality checking in journalism
     - Highlighting manipulative content and propaganda  
