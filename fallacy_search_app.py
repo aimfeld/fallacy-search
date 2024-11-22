@@ -37,7 +37,7 @@ def show_about_page():
 
     st.write("Potential Applications:")
     st.markdown("""
-    - Journalism and fact-checking
+    - Argument quality checking in journalism
     - Highlighting manipulative content and propaganda  
     - Analyzing blog posts and content on social media
     - Identifying weaknesses in legal arguments and court decisions
@@ -142,11 +142,7 @@ def main():
     warnings.filterwarnings("ignore", message="Streaming with Pydantic response_format not yet supported.")
     logging.basicConfig(level=logging.INFO)
 
-    st.set_page_config(
-        page_title="Fallacy Search",
-        page_icon="🔍",
-        layout="wide"
-    )
+    st.set_page_config(page_title="Fallacy Search", page_icon="🔍", layout="wide")
 
     with open('.streamlit/style.css') as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
