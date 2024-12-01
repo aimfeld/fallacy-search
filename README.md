@@ -1,4 +1,4 @@
-# Fallacy Search
+# Fallacy Search Web Application
 
 The Fallacy Search application helps users identify potential logical fallacies in any text. It uses GPT-4o to detect and analyze common reasoning errors and argumentative flaws. The tool aims to promote critical thinking and improve the quality of public discourse by making logical analysis more accessible.
 
